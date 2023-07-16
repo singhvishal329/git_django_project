@@ -1,2 +1,2 @@
-# git_django_project
+# Git_django_project
 GitHub User Repository details Search

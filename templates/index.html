@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>git get</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" ><h4>GIT-GET</h4></a>
+        
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          </ul>
+        
+      </div>
+    </nav>
+    <br />
+    <br />
+
+    <div class="container">
+      <div class="card mb-3">
+        <img src="static/git.jpg" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Github Information Search</h5>
+          <p class="card-text">Here on our platform, you can enter the Github user id and you will get Github project and Repositories of specific user</p>
+        </div>
+      </div>
+      <br>
+
+      <form class="row g-3" action="/details" method="post">
+        {% csrf_token %}
+        <h3> Enter Github UserId </h3>
+        <div class="col-auto">
+          <label for="formGroupExampleInput" class="visually-hidden">UserId</label>
+          <input type="text" class="form-control" id="userid" placeholder="userid" name="userid">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-info mb-3">Submit UserId</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th scope="col">Sr no</th>
+                  <th scope="col">Repo Name</th>
+                  <th scope="col">Language</th>
+                  <th scope="col">Link</th>
+                  <th scope="col">Mode</th>
+                  
+              </tr>
+          </thead>
+          {% for i,j in dct.items %}
+          <tbody>
+              <tr>
+                  <th scope="row">{{i}}</th>
+                  <td>{{j.repo}}</td>
+                  <td>{{j.lang}}</td>
+                  <td><a href={{j.link}}>{{j.link}}</a></td>
+                  <td>{{j.mode}}</td>
+                  
+              </tr>
+          </tbody>
+          {% endfor %}
+      </table>
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  </body>
+</html>
